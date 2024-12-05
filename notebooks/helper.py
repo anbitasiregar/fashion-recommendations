@@ -90,7 +90,8 @@ def fit_predict(model, X_train, y_train, X_test, y_test, isRegressor):
 
 
 """
-helper function to use LabelEncoder on string objects in a dataframe
+helper function to use LabelEncoder on string objects
+in a dataframe
 """
 def encode_strings(df):
   # Apply LabelEncoder to each text column in the DataFrame
@@ -113,3 +114,28 @@ def print_confusion_matrix_details(y_true, y_pred):
 
   # print classification report for further details
   print(classification_report(y_true=y_true, y_pred=y_pred))
+
+
+"""
+helper function to get random sample of data with
+same distribution of target data
+
+How to apply:
+red_articles_df = helper.sample_data(articles_df, bin_column="popularity", frac=0.75)
+"""
+def sample_data(df, bin_column, frac=0.5):
+    reduced_df = df.groupby(bin_column).apply(lambda x: x.sample(frac=frac, random_state=42)).reset_index(drop=True)
+
+    # Calculate proportions in the original data
+    original_count = df[bin_column].count()
+    original_proportions = df[bin_column].value_counts(normalize=True)
+    
+    # Calculate proportions in the reduced data
+    reduced_count = df[bin_column].count()
+    reduced_proportions = df[bin_column].value_counts(normalize=True)
+    
+    # Compare proportions
+    print(f"Original Count: {original_count}, Proportions: {original_proportions}\n")
+    print(f"Reduced Count: {reduced_count}, Proportions: {reduced_proportions}\n")
+
+    return reduced_df
