@@ -43,6 +43,8 @@ Increase inventory for black clothes and accessories, as this is the most popula
  Since the average basket size differs significantly by age group, personalized marketing campaigns can be designed for each demographic. For example, younger customers have smaller basket sizes, so they can be targeted with bundle offers or discounts to increase basket size.
 
 ## Next Steps
+- Feature Selection & Engineering: We only used descriptive data of each article of clothing and didn't use any metadata on the customers that purchased the clothing. Cherry picking customer features and creating a more comprehensive dataset for machine learning may provide more accurate predictions.
+- Hyperparameter Tuning: Our accuracy score is not very high and may need more hyperparameter tuning. With more time, we can do a selective GridSearchCV with this model to understand which hyperparameters would be even better to put into our model.
 
 ## For More Information
 See the full analysis in the [Jupyter Notebook](https://github.com/anbitasiregar/fashion-recommendations/tree/main/notebooks) or review the [presentation](https://github.com/anbitasiregar/nasa-asteroid-analysis/blob/main/presentations/Asteroid%20Classification%20Analysis%20Presentation.pdf)
