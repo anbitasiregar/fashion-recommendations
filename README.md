@@ -1,4 +1,4 @@
-# Fashion Trend Predictor
+# Fashion Trend Analysis & Machine Learning
 
 ## Objective
 This [dataset](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data) comes from Kaggle and details purchase history from the popular clothing store H&M from September 20, 2018 to September 22, 2020. We will use this data to:
@@ -20,21 +20,27 @@ NOTE: the target feature was calculated from number of purchases per article ite
 ## Analysis & Results
 
 ### Insight #1
+June and July are the months with highest number of purchases, and October and December have the lowest number of purchases.
 
 ### Insight #2
+Black is (by far!) the most popular color of clothing in the last two months.
 
 ### Insight #3
+Average basket size differs significantly by age group, with customers below 20 averaging smaller basket sizes.
 
 ### Winning model
-**Random Tree Classifier** with an accuracy of **74%%**
+**kNN** with an accuracy of **76%%**
 
 ## Conclusions
 
 ### Recommendation #1:
+Adjust budget for month or season-based campaigns to boost sales in months with lagging purchases like October and December. Further research could be needed to understand customer behaviors throughout the year.
 
 ### Recommendation #2:
+Increase inventory for black clothes and accessories, as this is the most popular color by far. Designers should ensure that there are multiple options for black articles of clothing.
 
 ### Recommendation #3:
+ Since the average basket size differs significantly by age group, personalized marketing campaigns can be designed for each demographic. For example, younger customers have smaller basket sizes, so they can be targeted with bundle offers or discounts to increase basket size.
 
 ## Next Steps
 
