@@ -47,7 +47,7 @@ Increase inventory for black clothes and accessories, as this is the most popula
 - Hyperparameter Tuning: Our accuracy score is not very high and may need more hyperparameter tuning. With more time, we can do a selective GridSearchCV with this model to understand which hyperparameters would be even better to put into our model.
 
 ## For More Information
-See the full analysis in the [Jupyter Notebook](https://github.com/anbitasiregar/fashion-recommendations/tree/main/notebooks) or review the [presentation](https://github.com/anbitasiregar/nasa-asteroid-analysis/blob/main/presentations/Asteroid%20Classification%20Analysis%20Presentation.pdf)
+See the full analysis in the [Jupyter Notebook](https://github.com/anbitasiregar/fashion-recommendations/tree/main/notebooks) or review the [presentation](https://github.com/anbitasiregar/fashion-recommendations/blob/main/presentations/Fashion%20Trend%20Predictor%20Analysis%20Presentation.pdf)
 
 Original data source: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data
 
