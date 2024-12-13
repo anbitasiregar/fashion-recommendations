@@ -240,6 +240,8 @@ class ANN:
     
     # Confusion Matrix
     print_confusion_matrix_details(y_test_classes, y_pred_classes)
+
+    return y_pred_probs
   
   def evaluate_accuracy(self, X_test, y_test):
     # Evaluate on the test set
