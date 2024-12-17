@@ -31,7 +31,7 @@ product_group_mapper = {
     "Garment Full body": 3,
     "Accessories": 4,
     "Swimwear": 5,
-    "Bags": 6,
+    "Bags": 6
 }
 
 # we also want to map the popularity index to numbers
