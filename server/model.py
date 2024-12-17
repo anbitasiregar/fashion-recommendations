@@ -91,7 +91,6 @@ def recommend_outfit_for_user(df, articles_df, feature_scaler, recommender, user
 
     # print the recommended product
     recommended_product_name = articles_df[articles_df["product_code"] == recommended_outfit["product_code"]]["prod_name"].values[0]
-    # print(f"Recommended Outfit Based on Your Preference:\nProduct Name: {recommended_product_name}, Product Code: {recommended_outfit['product_code']}, Popularity: {recommended_outfit['popularity']}")
 
     # return recommended product name and popularity
     return (recommended_product_name, recommended_outfit['popularity'])
@@ -168,7 +167,11 @@ app = Flask(__name__)
 # Route for recommendations
 @app.route('/recommend', methods=['POST'])
 def recommend():
+    print("inside recommend")
+    print(request)
     data = request.json
+    print(data)
+
     outfit_type = data['outfitType']
     preference = data['preference']
 
@@ -179,6 +182,8 @@ def recommend():
         "name": name,
         "popularity": popularity
     }
+    print(f"response: {response}")
+
     return jsonify(response)
 
 """
@@ -208,9 +213,9 @@ prod_train, prod_test, feat_train, feat_test, pop_train, pop_test = train_test_s
 recommender = OutfitRecommenderGMF(num_products=modeldata_df["product_code"].max() + 1, num_features=features.shape[1], embedding_dim=1, learning_rate=0.01)
 
 # train the model
-recommender.train(prod_train, feat_train, pop_train, epochs=50, batch_size=32)
+recommender.train(prod_train, feat_train, pop_train, epochs=10, batch_size=32)
 
 print("recommender is trained")
 
 # run the app
-app.run(port=8000)
+app.run(port=8000, debug=True)
