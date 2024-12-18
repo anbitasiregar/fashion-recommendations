@@ -15,6 +15,7 @@ from tensorflow.keras.optimizers import Adam
 
 # for webapp
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 # helper functions
 import sys
@@ -163,26 +164,23 @@ APP
 """
 # use Flask to create an API endpoint
 app = Flask(__name__)
+CORS(app)
 
 # Route for recommendations
 @app.route('/recommend', methods=['POST'])
 def recommend():
-    print("inside recommend")
-    print(request)
     data = request.json
-    print(data)
 
-    outfit_type = data['outfitType']
-    preference = data['preference']
+    outfit_type = int(data['outfitType'])
+    preference = int(data['preference'])
 
     # Filter dataset based on user input
     name, popularity = recommend_outfit_for_user(modeldata_df, articles_df, feature_scaler, recommender, user_outfit_type=outfit_type, user_preference=preference)
     
     response = {
         "name": name,
-        "popularity": popularity
+        "popularity": str(popularity)
     }
-    print(f"response: {response}")
 
     return jsonify(response)
 
@@ -213,7 +211,7 @@ prod_train, prod_test, feat_train, feat_test, pop_train, pop_test = train_test_s
 recommender = OutfitRecommenderGMF(num_products=modeldata_df["product_code"].max() + 1, num_features=features.shape[1], embedding_dim=1, learning_rate=0.01)
 
 # train the model
-recommender.train(prod_train, feat_train, pop_train, epochs=10, batch_size=32)
+recommender.train(prod_train, feat_train, pop_train, epochs=50, batch_size=32)
 
 print("recommender is trained")
 

@@ -7,18 +7,20 @@ function PrefForm () {
   const [preference, setPreference] = useState(0);
   const [recommendation, setRecommendation] = useState(null);
   
-  /*
+  
   const getRecommendation = async () => {
+    console.log("HERE: getrecommendation")
     try {
-        const response = await fetch("http://127.0.0.1:8000/recommend", {
+        const response = await fetch("http://localhost:8000/recommend", {
             method: "POST",
             headers: {
-                Accept: "application/json",
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Access-Control-Allow-Credentials": "true"
             },
             body: JSON.stringify({
-              "outfitType": "1",
-              "preference": "1"
+              "outfitType": outfitType,
+              "preference": preference
             })
         });
         
@@ -26,25 +28,15 @@ function PrefForm () {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
     
-        // const data = await response.json();
-        const data = { name: 'Red Skirt', popularity: 4.8 };
+        const data = await response.json();
         setRecommendation(data);
     } catch (error) {
         console.error("Error fetching recommendation:", error);
     }
   };
-  */
-
-  
-  const getRecommendation = async () => {
-    const data = { name: 'Red Skirt', popularity: 4.8 };
-    setRecommendation(data);
-  }
-    
   
     return (
       <div className="Form">
-        <h1>Outfit Recommender</h1>
         <form
           onSubmit={(e) => {
             e.preventDefault();
