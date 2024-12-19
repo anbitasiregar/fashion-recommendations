@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './App.css';
 
 function PrefForm () {
 
@@ -45,6 +46,7 @@ function PrefForm () {
         >
           <label>
             What type of outfit are you looking for?
+            <br />
             <select value={outfitType} onChange={(e) => setOutfitType(e.target.value)} required>
               <option value="">--Select--</option>
               <option value="1">Top</option>
@@ -56,8 +58,10 @@ function PrefForm () {
             </select>
           </label>
           <br />
+          <br />
           <label>
-            How popular do you want your outfit to be?
+            What popularity score would you prefer for your outfit?
+            <br />
             <select value={preference} onChange={(e) => setPreference(e.target.value)} required>
               <option value="">--Select--</option>
               <option value="0">Low</option>
@@ -66,7 +70,8 @@ function PrefForm () {
             </select>
           </label>
           <br />
-          <button type="submit">Get Recommendation</button>
+          <br />
+          <button type="submit" className="SubmitButton"><strong>Get Recommendation</strong></button>
         </form>
 
         {recommendation && (
